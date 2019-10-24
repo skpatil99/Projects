@@ -1,0 +1,9 @@
+[submodule "cancerDetection"]
+	path = cancerDetection
+	url = https://github.com/skpatil99/cancerDetection.git
+[submodule "Library"]
+	path = Library
+	url = https://github.com/skpatil99/Library.git
+[submodule "BloodBank"]
+	path = BloodBank
+	url = https://github.com/skpatil99/BloodBank.git
