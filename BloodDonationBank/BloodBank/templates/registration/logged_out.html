@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href={% static 'BloodBank/style.css'  %}>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div align="center" padding="50px">
+          <br><br><br><br><br>
+          <h3>Logged out successfully</h3>
+
+          <form action="{% url 'bloodbank:index' %}" method="GET">
+              <input id ="submit" type="submit" value="Go To Home">
+          </form>
+        </div>
+    </body>
+</html>

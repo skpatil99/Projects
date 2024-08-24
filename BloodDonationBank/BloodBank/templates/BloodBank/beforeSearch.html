@@ -1,0 +1,80 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SearchBlood</title>
+    <link rel="stylesheet" type="text/css" href={% static 'BloodBank/3layout.css'  %}>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+      <header>
+          <h1>Search Query Result</h1>
+      </header>
+
+      <div class="row">
+        <div class="column left">
+          <h2>Enter Blood Group</h2>
+          <form action="{% url 'bloodbank:search' %}" method="POST">{% csrf_token %}
+              <select name = "select">
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+              </select>
+
+              <input id ="submit" type="submit" value="Search">
+          </form>
+
+        </div>
+        <div class="column middle">
+          <h3>Result </h3>
+          <table border="1" align="center">
+            <tr>
+                <th>Blood Grp</th>
+                <th>Hospital</th>
+                <th>Stocks</th>
+                <th>Address</th>
+                <th>Contact</th>
+            </tr>
+            {% for result in searchResult %}
+            <tr>
+                <th> {{ result.Blood_Grp }} </th>
+                <th> {{ result.Hos_Name }} </th>
+                <th> {{ result.stock }} </th>
+                <th> {{ result.Hos_Address }} </th>
+                <th> {{ result.Hos_PhoneNo }} </th>
+
+            </tr>
+
+            {% endfor %}
+          </table>
+        </div>
+        <div class="column right">
+          <h4>Result </h4>
+          <table border="1" align="center">
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Contact</th>
+            </tr>
+            {% for result in donorResult %}
+            <tr>
+                <th> {{ result.Name }} </th>
+                <th> {{ result.Gender }} </th>
+                <th> {{ result.PhoneNo }} </th>
+            </tr>
+
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+
+  </body>
+</html>

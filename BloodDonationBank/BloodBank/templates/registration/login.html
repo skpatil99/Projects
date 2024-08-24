@@ -1,0 +1,25 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href={% static 'BloodBank/style.css'  %}>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div align="center" padding="50px">
+          <br><br><br><br><br>
+          <h3>Login For Hospital Staff</h3>
+
+          <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Login</button>
+          </form>
+
+        </div>
+
+    </body>
+</html>

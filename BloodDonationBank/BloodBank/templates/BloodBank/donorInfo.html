@@ -1,0 +1,63 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DonorInfo</title>
+    <link rel="stylesheet" type="text/css" href={% static 'BloodBank/3layout.css'  %}>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <header>
+        <h1>Donor Information</h1>
+    </header>
+    <div class="row">
+      <div class="column left">
+        <a href="{% url 'bloodbank:logout' %}" align="right"><b>Logout</b></a><br>
+
+        <form method="GET" action="{% url 'bloodbank:getDonorInfo' %}">
+            <h2>Enter the Blood Group</h2>
+            <select name = "donorBloodGrp">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+        <br><br><br>
+
+        <form action="{% url 'bloodbank:staff' %}" method="GET">
+            <input id ="submit" type="submit" value="Go To Home">
+        </form>
+      </div>
+      <div class="column middle">
+        <h3> Blood Group {{ donorBloodGrp }} List</h3>
+        <table border="1" align="center">
+          <tr>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Contact</th>
+          </tr>
+          {% for result in donorResult %}
+          <tr>
+              <th> {{ result.Name }} </th>
+              <th> {{ result.Gender }} </th>
+              <th> {{ result.PhoneNo }} </th>
+          </tr>
+
+          {% endfor %}
+        </table>
+
+      </div>
+      <div class="column right">
+
+      </div>
+    </div>
+  </body>
+</html>

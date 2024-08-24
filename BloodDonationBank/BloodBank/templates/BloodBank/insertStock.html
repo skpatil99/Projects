@@ -1,0 +1,82 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>insertStock</title>
+    <link rel="stylesheet" type="text/css" href={% static 'BloodBank/3layout.css'  %}>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <header>
+        <h1>Insert Stock</h1>
+    </header>
+    <div class="row">
+      <div class="column left">
+        <a href="{% url 'bloodbank:logout' %}" align="right"><b>Logout</b></a>
+        <br><br>
+        <form action="{% url 'bloodbank:stockInfo' %}" method="GET">
+          <table align="center">
+            <tr>
+              <th><label>Blood Group:</label></th>
+              <th>
+                <select name = "grp">
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                </select>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+              <th><label>Stocks :</label></th>
+              <th><input type="text" placeholder="Stocks" name="stock" pattern="[0-9]{1,}" title="Only 10 digit number" required></th>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+              <th><label>Hospital Code:</label></th>
+              <th><input type="text" placeholder="Hospital Code:" name="code" pattern="[0-9]{1,}" title="Enter Only number" required></th>
+            </tr>
+            <tr>
+            </tr>
+          </table><br><br>
+          <input type="submit" value="Submit">
+        </form><br><br><br>
+
+        <form action="{% url 'bloodbank:staff' %}" method="GET">
+            <input id ="submit" type="submit" value="Go To Home">
+        </form>
+      </div>
+      <div class="column middle">
+        <h3> Insert data Successfully : Update Database </h3>
+        <table border="1" align="center">
+          <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Blood_Grp</th>
+              <th>Stock</th>
+          </tr>
+          {% for data in result %}
+          <tr>
+              <th> {{ data.Hospital_Code }} </th>
+              <th> {{ data.Hos_Name }} </th>
+              <th> {{ data.Blood_Grp }} </th>
+              <th> {{ data.stock }} </th>
+          </tr>
+
+          {% endfor %}
+        </table>
+      </div>
+      <div class="column right">
+
+      </div>
+    </div>
+  </body>
+</html>

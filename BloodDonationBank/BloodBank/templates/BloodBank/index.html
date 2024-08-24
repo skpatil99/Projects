@@ -1,0 +1,58 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href={% static 'BloodBank/layout.css'  %}>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+      <div id = "header">
+        <header>
+          <h1>Blood Bank</h1>
+        </header>
+      </div>
+
+      <section>
+        <nav>
+          <ul>
+            <li><a href="{% url 'bloodbank:beforeSearch' %}" >SearchBlood</a></li>
+          </ul>
+        </nav>
+
+        <article>
+          <h1>Search</h1>
+          <p>“Sometimes money cannot save life but donated blood can!”</p>
+          <p>“Fighting you's the only reward I want,' I said, 'for saving your life.”</p>
+        </article>
+
+        <nav>
+          <ul>
+            <li><a href="{% url 'bloodbank:donorRegistration' %}" >Registration Donor</a></li>
+          </ul>
+        </nav>
+
+        <article>
+          <h1>Save Life</h1>
+          <p>“Someone’s blood saved my life and made my mom smile – was that you?”</p>
+          <p>“The Blood Donor of today may be recipient of tomorrow.”</p>
+        </article>
+
+        <nav>
+          <ul>
+            <li><a href="{% url 'bloodbank:login' %}" >Login</a></li>
+          </ul>
+        </nav>
+
+        <article>
+          <h1>Login</h1>
+          <p>“It’s a great honor,” said Fedyor. “To save a life. You saved many.” </p>
+          <p>“We were meant to rescue each other, not cut down the forest to rescue one.”</p>
+        </article>
+      </section>
+
+  </body>
+</html>

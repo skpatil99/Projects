@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #666;
+    padding: 7px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+    opacity: 1;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-repeat: no-repeat;
+    background-image: url('images/background.png');
+    background-size: cover;
+
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+    text-align:center;
+}
+
+.left, .right {
+  width: 25%;
+}
+
+.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+table{
+  text-align:center;
+}

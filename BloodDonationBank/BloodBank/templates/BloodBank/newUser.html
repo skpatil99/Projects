@@ -1,0 +1,99 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NewUser</title>
+    <link rel="stylesheet" type="text/css" href={% static 'BloodBank/3layout.css'  %}>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <header>
+        <h1>New User</h1>
+    </header>
+    <div class="row">
+      <div class="column left">
+        <a href="{% url 'bloodbank:logout' %}" align="right"><b>Logout</b></a>
+        <br><br>
+        <form method="POST" action="{% url 'bloodbank:getNewUserInfo' %}">{% csrf_token %}
+            <h2>Enter the Hospital Information</h2>
+            <table>
+              <tr>
+                <th><label>Code:</label></th>
+                <th><input type="text" placeholder="Code" name="Hospital_Code" pattern="[0-9]{1,}" title="Enter Only number"  required></th>
+              </tr>
+              <tr>
+                <th><label>Name:</label></th>
+                <th><input type="text" placeholder="Name" name="Hos_Name" pattern="[a-zA-Z]{1,}" title="Enter Alphabet only" required></th>
+              </tr>
+              <tr>
+                <th><label>Address:</label></th>
+                <th><input type="text" placeholder="Address" name="Hos_Address" required></th>
+              </tr>
+              <tr>
+                <th><label>Contact:</label></th>
+                <th><input type="text" placeholder="Contact" name="Hos_PhoneNo" pattern="[0-9]{10}" title="Only 10 digit number" required></th>
+              </tr>
+              <tr>
+                <th><label>Email:</label></th>
+                <th><input type="text" placeholder="Email" name="Hos_Email" required></th>
+              </tr>
+            </table><br><br>
+            <table>
+              <tr>
+                  <th><label>A+ Info:</label></th>
+                  <th><input type="text"  name="1" value="A+"></th>
+                  <th><input type="text" placeholder="Stock" name="Stock1" pattern="[0-9]{1,}" title="Only number" required></th>
+              </tr>
+              <tr>
+                  <th><label>A- Info:</label></th>
+                  <th><input type="text"  name="2" value="A-"></th>
+                  <th><input type="text" placeholder="Stock" name="Stock2" pattern="[0-9]{1,}" title="Only number" required></th>
+              </tr>
+              <tr>
+                  <th><label>B+ Info:</label></th>
+                  <th><input type="text"  name="3" value="B+"></th>
+                  <th><input type="text" placeholder="Stock" name="Stock3" pattern="[0-9]{1,}" title="Only number" required></th>
+              </tr>
+              <tr>
+                  <th><label>B- Info:</label></th>
+                  <th><input type="text"  name="4" value="B-"></th>
+                  <th><input type="text" placeholder="Stock" name="Stock4" pattern="[0-9]{1,}" title="Only number" required></th>
+              </tr>
+              <tr>
+                  <th><label>O+ Info:</label></th>
+                  <th><input type="text"  name="5" value="O+"></th>
+                  <th><input type="text" placeholder="Stock" name="Stock5" pattern="[0-9]{1,}" title="Only number" required></th>
+              </tr>
+              <tr>
+                  <th><label>O- Info:</label></th>
+                  <th><input type="text"  name="6" value="O-"></th>
+                  <th><input type="text" placeholder="Stock" name="Stock6" pattern="[0-9]{1,}" title="Only number"  required></th>
+              </tr>
+              <tr>
+                  <th><label>AB+ Info:</label></th>
+                  <th><input type="text"  name="7" value="AB+"></th>
+                  <th><input type="text" placeholder="Stock" name="Stock7" pattern="[0-9]{1,}" title="Only number" required></th>
+              </tr>
+              <tr>
+                  <th><label>AB- Info:</label></th>
+                  <th><input type="text"  name="8" value="AB-"></th>
+                  <th><input type="text" placeholder="Stock" name="Stock8" pattern="[0-9]{1,}" title="Only number" required></th>
+              </tr>
+            </table><br>
+            <input type="submit" value="Submit">
+        </form><br><br><br>
+      </div>
+      <div class="column middle">
+        <h1> {{result}}</h1><br>
+        <h2> {{thank}}</h2><br>
+
+      </div>
+      <div class="column right">
+
+
+      </div>
+    </div>
+  </body>
+</html>

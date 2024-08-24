@@ -1,0 +1,91 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href={% static 'BloodBank/3layout.css'  %}>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+      <header>
+          <h1>Register YourSelf</h1>
+      </header>
+
+      <div class="row">
+        <div class="column left">
+
+          <form method="POST" action="{% url 'bloodbank:getDonorRegInfo' %}">{% csrf_token %}
+              <table align="center">
+                <tr>
+                    <th><label>Name:</label></th>
+                    <th><input type="text" placeholder="Name" name="Reg_Name" pattern="[a-zA-Z]{1,50}" title="Enter A-za-z less than 50 character"  required></th>
+                </tr>
+                <br>
+                <tr>
+                </tr>
+                <tr>
+                    <th><label>Age:</label></th>
+                    <th>
+                      <select name = "Reg_Age">
+                        {% for i in n %}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                      </select>
+                    </th>
+
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                    <th><label>Gender:</label></th>
+                    <th>
+                      <select name = "Reg_Gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                      </select>
+                  </th>
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                    <th><label>Blood Group:</label></th>
+                    <th>
+                      <select name = "Reg_grp">
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                      </select>
+                    </th>
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                    <th><label>Contact:</label></th>
+                    <th><input type="text" placeholder="Contact" name="Reg_PhoneNo" pattern="[0-9]{10}" title="Only 10 digit number" required></th>
+                </tr>
+              </table><br><br>
+                  <input type="submit" value="Submit"><br><br><br>
+            </form>
+            <form action="{% url 'bloodbank:index' %}" method="GET">
+                <input id ="submit" type="submit" value="Go To Home">
+            </form>
+        </div>
+        <div class="column middle">
+          <h1> {{Result}}</h1><br>
+          <h2> {{thank}}</h2><br>
+        </div>
+        <div class="column right">
+
+
+        </div>
+      </div>
+  </body>
+</html>
